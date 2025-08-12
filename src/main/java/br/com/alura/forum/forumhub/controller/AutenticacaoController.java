@@ -1,9 +1,9 @@
-package forumhub.controller;
+package br.com.alura.forum.forumhub.controller;
 
-import forumhub.Infra.security.DadosTokenJWT;
-import forumhub.Infra.security.TokenService;
-import forumhub.usuario.DadosAutenticacao;
-import forumhub.usuario.Usuario;
+import br.com.alura.forum.forumhub.Infra.security.DadosTokenJWT;
+import br.com.alura.forum.forumhub.Infra.security.TokenService;
+import br.com.alura.forum.forumhub.usuario.DadosAutenticacao;
+import br.com.alura.forum.forumhub.usuario.Usuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package forumhub.usuario;
+package br.com.alura.forum.forumhub.usuario;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

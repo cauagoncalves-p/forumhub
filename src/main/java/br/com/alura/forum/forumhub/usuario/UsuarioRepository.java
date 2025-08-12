@@ -1,4 +1,4 @@
-package forumhub.usuario;
+package br.com.alura.forum.forumhub.usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;

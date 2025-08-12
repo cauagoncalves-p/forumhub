@@ -1,4 +1,4 @@
-package forumhub.Infra.security;
+package br.com.alura.forum.forumhub.Infra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ public class SecurityConfigurations {
                 http.csrf(csrf -> csrf.disable())
                         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                         .authorizeHttpRequests(req -> {
-                            req.requestMatchers("/login").permitAll();
+                            req.requestMatchers("/login", "/topicos").permitAll();
                             req.anyRequest().authenticated();
                         }).addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                         .build();

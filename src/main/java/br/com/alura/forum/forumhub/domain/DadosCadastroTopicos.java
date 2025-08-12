@@ -1,4 +1,4 @@
-package forumhub.domain;
+package br.com.alura.forum.forumhub.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.NotBlank;

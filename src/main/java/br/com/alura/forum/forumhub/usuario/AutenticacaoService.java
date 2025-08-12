@@ -1,4 +1,4 @@
-package forumhub.usuario;
+package br.com.alura.forum.forumhub.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
