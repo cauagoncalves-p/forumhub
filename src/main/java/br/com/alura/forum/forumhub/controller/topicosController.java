@@ -1,5 +1,6 @@
 package br.com.alura.forum.forumhub.controller;
 
+import br.com.alura.forum.forumhub.ValidacaoException;
 import br.com.alura.forum.forumhub.domain.*;
 import br.com.alura.forum.forumhub.domain.validacoes.ValidadorTopicos;
 import jakarta.validation.Valid;
@@ -34,7 +35,6 @@ public class topicosController {
     }
 
     @GetMapping()
-    @Transactional
     public ResponseEntity<Page<DadosListagemTopico>> listagem(@PageableDefault(size = 10, sort = {"titulo"}) Pageable page){
         var pag = repository.findAll(page)
                 .map(DadosListagemTopico::new);
@@ -42,5 +42,32 @@ public class topicosController {
         return ResponseEntity.ok(pag);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity listarMedicoPeloId(@PageableDefault @Valid DadosDetalhamentoTopico dados){
+            var topico = repository.findById(dados.id())
+                    .orElseThrow(() -> new ValidacaoException("O ID do Topico não existe"));
+            return ResponseEntity.ok(topico);
+    }
 
+    @DeleteMapping("{id}")
+    @Transactional
+    public ResponseEntity deletarTopicoPeloId(@PageableDefault DadosDetalhamentoTopico dados){
+        var topico = repository.findById(dados.id())
+                .orElseThrow(() -> new ValidacaoException("O ID do Topico não existe"));
+
+        repository.delete(topico);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DadosDetalhamentoTopico> atualizarTopicos(@PathVariable Long id,
+            @RequestBody @Valid DadosAtualizarTopico dados) {
+        var topico = repository.findById(id)
+                .orElseThrow(() -> new ValidacaoException("O ID do Tópico não existe"));
+
+        topico.DadosAtualizarTopico(dados);
+
+        return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
 }

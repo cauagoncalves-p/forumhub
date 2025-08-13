@@ -31,6 +31,24 @@ public class Topico {
         this.curso = dados.curso();
     }
 
+    public void DadosAtualizarTopico(@Valid DadosAtualizarTopico dados){
+        if(dados.titulo() != null){
+            this.titulo = dados.titulo();
+        }
+        if (dados.message() != null){
+           this.message = dados.message();
+        }
+        if (dados.data() != null){
+           this.data = dados.data();
+        }
+        if(dados.autor() != null){
+           this.autor = dados.autor();
+        }
+        if(dados.curso() != null){
+           this.curso = dados.curso();
+        }
+    }
+
     public String getCurso() {
         return curso;
     }
