@@ -43,7 +43,7 @@ public class topicosController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity listarMedicoPeloId(@PageableDefault @Valid DadosDetalhamentoTopico dados){
+    public ResponseEntity listarTopicoPeloId(@PageableDefault @Valid DadosDetalhamentoTopico dados){
             var topico = repository.findById(dados.id())
                     .orElseThrow(() -> new ValidacaoException("O ID do Topico não existe"));
             return ResponseEntity.ok(topico);

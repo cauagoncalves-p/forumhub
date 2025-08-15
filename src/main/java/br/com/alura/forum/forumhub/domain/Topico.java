@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,7 +27,7 @@ public class Topico {
     public Topico(@Valid DadosCadastroTopicos dados) {
         this.titulo = dados.titulo();
         this.message = dados.message();
-        this.data = dados.data();
+        this.data = LocalDateTime.now().withNano(0);
         this.autor = dados.autor();
         this.curso = dados.curso();
     }
@@ -69,8 +70,8 @@ public class Topico {
         return data;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public void setData() {
+        this.data = LocalDateTime.now().withNano(0);
     }
 
     public String getMessage() {

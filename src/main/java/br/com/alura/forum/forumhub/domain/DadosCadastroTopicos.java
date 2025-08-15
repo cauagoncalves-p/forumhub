@@ -1,6 +1,5 @@
 package br.com.alura.forum.forumhub.domain;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 import java.time.LocalDateTime;
@@ -10,7 +9,7 @@ public record DadosCadastroTopicos(
         String titulo,
         @NotBlank
         String message,
-        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+        @JsonProperty(access = JsonProperty.Access.READ_ONLY)
         LocalDateTime data,
         @NotBlank
         String curso,
